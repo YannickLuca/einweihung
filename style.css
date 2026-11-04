@@ -446,6 +446,99 @@ h1 {
   display: none;
 }
 
+/* ---------- "Psst … noch etwas": Schlüsselbund mit drei Schlüsseln ---------- */
+
+.surprise {
+  text-align: center;
+  border-color: rgba(240, 173, 154, 0.35);
+  background:
+    radial-gradient(70% 55% at 50% 18%, rgba(240, 173, 154, 0.2), transparent 70%),
+    linear-gradient(180deg, rgba(62, 36, 88, 0.93), rgba(33, 21, 60, 0.95));
+}
+
+.surprise .label {
+  margin-top: 4px;
+  color: #f3b5a3;
+}
+
+.keyring {
+  display: block;
+  width: min(230px, 78%);
+  margin: -6px auto 4px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.keyring svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.swing-left,
+.swing-right,
+.swing-tiny {
+  transform-box: view-box;
+}
+
+.swing-left { transform-origin: 98px 46px; }
+.swing-right { transform-origin: 142px 46px; }
+
+.swing-tiny {
+  transform-origin: 120px 60px;
+  animation: swing 3.4s ease-in-out infinite;
+}
+
+.keyring.jingle .swing-tiny { animation: jingle 1s ease-in-out; }
+.keyring.jingle .swing-left { animation: jiggle 0.8s ease-in-out; }
+.keyring.jingle .swing-right { animation: jiggle 0.8s ease-in-out 0.06s reverse; }
+
+@keyframes swing {
+  0%, 100% { transform: rotate(6deg); }
+  50% { transform: rotate(-6deg); }
+}
+
+@keyframes jingle {
+  15% { transform: rotate(24deg); }
+  35% { transform: rotate(-20deg); }
+  55% { transform: rotate(12deg); }
+  75% { transform: rotate(-6deg); }
+}
+
+@keyframes jiggle {
+  25% { transform: rotate(-7deg); }
+  60% { transform: rotate(5deg); }
+}
+
+.surprise-head {
+  margin: 6px 0 0;
+  font-family: var(--display);
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+.surprise-text {
+  max-width: 32ch;
+  margin: 8px auto 0;
+  text-wrap: pretty;
+}
+
+/* Herzchen, die beim Antippen aufsteigen */
+.heart {
+  position: absolute;
+  z-index: 2;
+  width: 18px;
+  height: 18px;
+  fill: #f4a7b5;
+  filter: drop-shadow(0 0 6px rgba(244, 167, 181, 0.7));
+  pointer-events: none;
+}
+
 /* ---------- Knöpfe und Felder ---------- */
 
 .btn {
@@ -841,6 +934,7 @@ textarea:focus-visible {
 .fade-in > :nth-child(2) { animation-delay: 0.08s; }
 .fade-in > :nth-child(3) { animation-delay: 0.16s; }
 .fade-in > :nth-child(4) { animation-delay: 0.24s; }
+.fade-in > :nth-child(5) { animation-delay: 0.32s; }
 
 @keyframes fade-in {
   from { opacity: 0; transform: translateY(16px); }

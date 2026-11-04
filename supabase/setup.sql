@@ -36,11 +36,16 @@ $$;
 -- ---------------------------------------------------------------------
 
 -- Infos, die Gäste erst nach dem Login sehen (genau eine Zeile)
+--   surprise = optionaler Text für die Karte "Psst … noch etwas"
+--              (erste Zeile = Überschrift, leer = keine Karte)
 create table if not exists public.party_info (
   id       smallint primary key default 1 check (id = 1),
   address  text not null default 'Adresse folgt',
-  note     text
+  note     text,
+  surprise text
 );
+
+alter table public.party_info add column if not exists surprise text;  -- für bestehende Datenbanken
 
 insert into public.party_info (id) values (1)
 on conflict (id) do nothing;
@@ -72,7 +77,7 @@ create table if not exists public.snacks (
 -- ---------------------------------------------------------------------
 revoke all on table public.party_info, public.guests, public.snacks from anon, authenticated;
 
-grant select (address, note)          on public.party_info to authenticated;  -- Adresse lesen
+grant select (address, note, surprise) on public.party_info to authenticated; -- Adresse & Überraschung lesen
 grant insert (name, persons, message) on public.guests     to authenticated;  -- sich anmelden, NICHT lesen
 grant select (id, name, claimed_at)   on public.snacks     to authenticated;  -- Snacks lesen, OHNE Namen
 

@@ -84,6 +84,8 @@ Die Adresse steht absichtlich in **keiner** Datei, denn die Dateien sind auf Git
 
 Gäste sehen die Adresse erst nach dem Login, mit einem Knopf **Route planen** (öffnet Google Maps).
 
+**Optional – eine kleine Überraschung:** Was im Feld **surprise** steht, erscheint nach dem Login als Karte „Psst … noch etwas“ mit einem Schlüsselbund. Die erste Zeile wird zur Überschrift, der Rest zum Text. Bleibt das Feld leer, gibt es keine Karte. Auch dieser Text steht in keiner öffentlichen Datei.
+
 ## Schritt 3: URL und Key in config.js eintragen
 
 1. In Supabase oben auf **Connect** klicken – oder links unten **⚙ Project Settings** → **API Keys**.

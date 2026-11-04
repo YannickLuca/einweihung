@@ -77,6 +77,11 @@
         check(error);
         return data;
       },
+      async surprise() {
+        // Eigene Abfrage: Fehlt die Spalte noch, bleibt nur die Überraschung weg – nicht die Adresse.
+        const { data, error } = await db.from("party_info").select("surprise").limit(1).maybeSingle();
+        return error ? null : (data && data.surprise) || "";
+      },
       async snacks() {
         const { data, error } = await db.from("snacks").select("id, name, claimed_at").order("id");
         check(error);
@@ -130,6 +135,10 @@
       async info() {
         await wait(300);
         return { address: "Musterstrasse 1, 8000 Zürich", note: "Vorschau – hier steht später eure Adresse aus Supabase." };
+      },
+      async surprise() {
+        await wait(300);
+        return "Hier steht eure Überraschung\nDen Text tragt ihr in Supabase ein: Tabelle party_info, Feld surprise. Die erste Zeile wird zur Überschrift.";
       },
       async snacks() {
         await wait(200);
@@ -307,6 +316,7 @@
     renderCountdown();
     showRsvpState();
     loadInfo();
+    loadSurprise();
     refreshSnacks();
 
     if (!watching) {
@@ -326,7 +336,7 @@
     const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     const days = Math.round((PARTY_DAY - today) / 86400000);
     $("#countdown").textContent =
-      days > 1 ? "Noch " + days + " Tage" : days === 1 ? "Morgen!" : days === 0 ? "Heute ab 19 Uhr" : "Danke fürs Kommen";
+      days > 1 ? "Noch " + days + " Tage" : days === 1 ? "Morgen!" : days === 0 ? "Heute ab 16 Uhr" : "Danke fürs Kommen";
   }
 
   async function loadInfo() {
@@ -359,6 +369,67 @@
     const route = $("#route");
     route.hidden = !address || address === "Adresse folgt";
     route.href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(address);
+  }
+
+  /* ---------------------------------------------------------
+     "Psst … noch etwas" – Text aus Supabase, erste Zeile = Überschrift
+     --------------------------------------------------------- */
+  async function loadSurprise() {
+    const cached = memory.get("surprise", "");
+    if (cached) showSurprise(cached);
+    const text = await backend.surprise(); // null = gerade nicht ladbar → so lassen
+    if (text === null) return;
+    showSurprise(text);
+    if (!backend.preview) memory.set("surprise", text);
+  }
+
+  function showSurprise(text) {
+    const [head, ...rest] = String(text || "").split("\n");
+    $("#surprise-head").textContent = tidy(head, 120);
+    $("#surprise-text").textContent = tidy(rest.join(" "), 500);
+    $("#surprise-text").hidden = !$("#surprise-text").textContent;
+    $("#surprise").hidden = !$("#surprise-head").textContent;
+  }
+
+  let jingleTimer = 0;
+
+  function jingle() {
+    const ring = $("#keyring");
+    ring.classList.remove("jingle");
+    void ring.offsetWidth; // Animation neu starten
+    ring.classList.add("jingle");
+    clearTimeout(jingleTimer);
+    jingleTimer = setTimeout(() => ring.classList.remove("jingle"), 1000);
+    if (reduceMotion || !ring.animate) return;
+
+    const card = $("#surprise");
+    const from = ring.getBoundingClientRect();
+    const base = card.getBoundingClientRect();
+    for (let i = 0; i < 7; i++) {
+      const heart = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      heart.setAttribute("viewBox", "0 0 24 24");
+      heart.setAttribute("class", "heart");
+      heart.innerHTML =
+        '<path d="M12 21C5 16 2 12.5 2 8.5 2 5.4 4.4 3 7.4 3c1.9 0 3.6 1 4.6 2.6C13 4 14.7 3 16.6 3 19.6 3 22 5.4 22 8.5c0 4-3 7.5-10 12.5Z"/>';
+      heart.style.left = from.left - base.left + from.width / 2 - 9 + "px";
+      heart.style.top = from.top - base.top + from.height * 0.6 + "px";
+      card.append(heart);
+
+      const dx = (Math.random() - 0.5) * 150;
+      const dy = -(70 + Math.random() * 90);
+      const size = 0.6 + Math.random() * 0.7;
+      heart
+        .animate(
+          [
+            { transform: "translate(0, 0) scale(0.3)", opacity: 0 },
+            { transform: `translate(${dx * 0.3}px, ${dy * 0.3}px) scale(${size})`, opacity: 1, offset: 0.25 },
+            { transform: `translate(${dx}px, ${dy}px) scale(${size * 0.8})`, opacity: 0 },
+          ],
+          { duration: 1400 + Math.random() * 600, delay: i * 60, easing: "cubic-bezier(.2, .7, .3, 1)", fill: "both" }
+        )
+        .finished.then(() => heart.remove(), () => heart.remove());
+      setTimeout(() => heart.remove(), 2800);
+    }
   }
 
   /* ---------------------------------------------------------
@@ -764,6 +835,7 @@
       if (event.target === dialog) closeDialog(); // Tipp neben das Fenster
     });
     $("#logout").addEventListener("click", handleLogout);
+    $("#keyring").addEventListener("click", jingle);
 
     let lastWidth = window.innerWidth;
     let timer = 0;

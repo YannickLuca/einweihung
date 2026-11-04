@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Einweihungsparty · Dein temporärer Wohnungsschlüssel</title>
-  <meta name="description" content="Einweihungsparty am Samstag, 5. Dezember 2026, ab 19 Uhr. Glühwein, Punsch und Lichterketten.">
+  <meta name="description" content="Einweihungsparty am Samstag, 5. Dezember 2026, ab 16 Uhr. Glühwein, Punsch und Lichterketten.">
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#140e2b">
 
@@ -12,8 +12,8 @@
        og:image braucht die vollständige Adresse (ANLEITUNG.md, Schritt 5c). -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Einweihungsparty 🔑">
-  <meta property="og:description" content="Dein temporärer Wohnungsschlüssel · Sa, 5. Dezember 2026, ab 19 Uhr">
-  <meta property="og:image" content="https://yannickluca.github.io/einweihung/og-image.jpg">
+  <meta property="og:description" content="Dein temporärer Wohnungsschlüssel · Sa, 5. Dezember 2026, ab 16 Uhr">
+  <meta property="og:image" content="https://yannickluca.github.io/einweihung/og-image.jpg?v=2">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
 
@@ -58,6 +58,26 @@
           <path d="M55.6 130v150" stroke="rgba(255,250,225,.5)" stroke-width="1.2"/>
           <path d="M46.5 105h27" stroke="rgba(255,250,225,.55)" stroke-width="1.2"/>
         </g>
+      </symbol>
+
+      <!-- Kleiner Schlüssel mit Herz, in Roségold -->
+      <linearGradient id="rose-face" gradientUnits="userSpaceOnUse" x1="14" y1="6" x2="106" y2="294">
+        <stop offset="0" stop-color="#ffe6de"/>
+        <stop offset=".25" stop-color="#f6b9a8"/>
+        <stop offset=".55" stop-color="#d98a78"/>
+        <stop offset=".8" stop-color="#f0ad9a"/>
+        <stop offset="1" stop-color="#b86b5c"/>
+      </linearGradient>
+      <linearGradient id="ring-gold" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#fff1b8"/>
+        <stop offset=".5" stop-color="#e2a93c"/>
+        <stop offset="1" stop-color="#a8741d"/>
+      </linearGradient>
+      <symbol id="key-heart" viewBox="0 0 120 300">
+        <path fill-rule="evenodd" d="M60 8a50 50 0 1 1 0 100a50 50 0 1 1 0-100Z M60 86C38 72 28 60 28 48c0-10 8-16 16-16 7 0 13 4 16 10 3-6 9-10 16-10 8 0 16 6 16 16 0 12-10 24-32 38Z"/>
+        <rect x="44" y="102" width="32" height="13" rx="3"/>
+        <path d="M53 100h14v186l-7 7-7-7Z"/>
+        <path d="M66 224h26v14h6v16H86v8h10v20H66Z"/>
       </symbol>
     </defs>
   </svg>
@@ -143,6 +163,39 @@
           <p>Glühwein, Punsch und ganz viele Lichterketten</p>
           <p class="fine">Gültig für einen Abend · übertragbar auf deine Begleitung</p>
         </div>
+      </section>
+
+      <!-- Kleine Überraschung: Der Text kommt nach dem Login aus Supabase (party_info → surprise) -->
+      <section class="card surprise" id="surprise" aria-labelledby="surprise-label" hidden>
+        <button type="button" class="keyring" id="keyring" aria-label="Schlüsselbund klimpern lassen">
+          <svg viewBox="0 0 240 190" aria-hidden="true" focusable="false">
+            <g class="swing-left">
+              <g transform="translate(98.2 46.1) rotate(34) scale(.5) translate(-60 -14)">
+                <use href="#key-shape" width="120" height="300" fill="#7d5718" transform="translate(4 4)"/>
+                <use href="#key-shape" width="120" height="300" fill="url(#gold-face)"/>
+                <use href="#key-details" width="120" height="300"/>
+              </g>
+            </g>
+            <g class="swing-right">
+              <g transform="translate(141.8 46.1) rotate(-34) scale(.5) translate(-60 -14)">
+                <use href="#key-shape" width="120" height="300" fill="#7d5718" transform="translate(4 4)"/>
+                <use href="#key-shape" width="120" height="300" fill="url(#gold-face)"/>
+                <use href="#key-details" width="120" height="300"/>
+              </g>
+            </g>
+            <circle cx="120" cy="36" r="24" fill="none" stroke="url(#ring-gold)" stroke-width="6"/>
+            <g class="swing-tiny">
+              <circle cx="120" cy="66" r="6" fill="none" stroke="#eaa592" stroke-width="3"/>
+              <g transform="translate(120 72) scale(.34) translate(-60 -8)">
+                <use href="#key-heart" width="120" height="300" fill="#a35f50" transform="translate(4 4)"/>
+                <use href="#key-heart" width="120" height="300" fill="url(#rose-face)"/>
+              </g>
+            </g>
+          </svg>
+        </button>
+        <span class="label" id="surprise-label">Psst … noch etwas</span>
+        <p class="surprise-head" id="surprise-head"></p>
+        <p class="surprise-text" id="surprise-text" hidden></p>
       </section>
 
       <!-- Anmeldung -->
