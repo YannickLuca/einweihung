@@ -1,0 +1,35 @@
+# Hält das Gratis-Supabase-Projekt bis zur Party wach.
+# Supabase pausiert Gratis-Projekte nach 7 Tagen ohne Aktivität –
+# dieser kleine Auftrag stupst die Datenbank alle 3 Tage an.
+# Du musst nichts tun: GitHub führt ihn automatisch aus.
+
+name: Supabase wachhalten
+
+on:
+  schedule:
+    - cron: "17 7 */3 * *"   # alle 3 Tage, ca. 08:17 Uhr Schweizer Zeit
+  workflow_dispatch:          # Knopf "Run workflow" zum Testen
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Supabase anstupsen
+        env:
+          CONFIG_URL: https://raw.githubusercontent.com/${{ github.repository }}/${{ github.ref_name }}/config.js
+        run: |
+          config="$(curl -fsSL "$CONFIG_URL")"
+          url="$(printf '%s\n' "$config" | sed -n 's/.*supabaseUrl:[[:space:]]*"\([^"]*\)".*/\1/p')"
+          key="$(printf '%s\n' "$config" | sed -n 's/.*supabaseKey:[[:space:]]*"\([^"]*\)".*/\1/p')"
+
+          if [[ "$url" != https://* ]]; then
+            echo "config.js ist noch nicht ausgefüllt – nichts zu tun."
+            exit 0
+          fi
+
+          curl -fsS -X POST "${url%/}/rest/v1/rpc/ping" \
+            -H "apikey: $key" \
+            -H "Content-Type: application/json" \
+            -d '{}'
+          echo
+          echo "Supabase ist wach."

@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Einweihungsparty · Dein temporärer Wohnungsschlüssel</title>
+  <meta name="description" content="Einweihungsparty am Samstag, 5. Dezember 2026, ab 19 Uhr. Glühwein, Punsch und Lichterketten.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#140e2b">
+
+  <!-- Vorschau, wenn der Link in WhatsApp geteilt wird.
+       og:image braucht die vollständige Adresse (ANLEITUNG.md, Schritt 5c). -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Einweihungsparty 🔑">
+  <meta property="og:description" content="Dein temporärer Wohnungsschlüssel · Sa, 5. Dezember 2026, ab 19 Uhr">
+  <meta property="og:image" content="https://yannickluca.github.io/einweihung/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500..700;1,9..144,500..700&family=Nunito:wght@400;600;700;800&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Bausteine für den goldenen Schlüssel: Form, Verzierungen, Goldverlauf -->
+  <svg class="svg-defs" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="gold-face" gradientUnits="userSpaceOnUse" x1="14" y1="6" x2="106" y2="294">
+        <stop offset="0" stop-color="#fff3c4"/>
+        <stop offset=".18" stop-color="#f7d36b"/>
+        <stop offset=".45" stop-color="#d99d32"/>
+        <stop offset=".62" stop-color="#f3c95c"/>
+        <stop offset=".85" stop-color="#c58a26"/>
+        <stop offset="1" stop-color="#9c6b1c"/>
+      </linearGradient>
+
+      <symbol id="key-shape" viewBox="0 0 120 300">
+        <!-- Griff mit Haus-Ausschnitt -->
+        <path fill-rule="evenodd" d="M60 8a50 50 0 1 1 0 100a50 50 0 1 1 0-100Z M32 58 60 32 71 42.2V36h7v12.7L88 58h-5v28H67V69H53v17H37V58Z"/>
+        <!-- Bund -->
+        <rect x="44" y="102" width="32" height="13" rx="3"/>
+        <rect x="47" y="119" width="26" height="8" rx="2.5"/>
+        <!-- Schaft mit Spitze -->
+        <path d="M53 100h14v186l-7 7-7-7Z"/>
+        <!-- Bart -->
+        <path d="M66 224h26v14h6v16H86v8h10v20H66Z"/>
+      </symbol>
+
+      <symbol id="key-details" viewBox="0 0 120 300">
+        <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="60" cy="58" r="44.5" stroke="rgba(110,70,12,.45)" stroke-width="1.6"/>
+          <path d="M32 58 60 32 71 42.2V36h7v12.7L88 58h-5v28H67V69H53v17H37V58Z" stroke="rgba(110,70,12,.5)" stroke-width="1.6"/>
+          <path d="M22 40A44 44 0 0 1 56 14.2" stroke="rgba(255,250,225,.75)" stroke-width="2.4"/>
+          <path d="M60 134v134" stroke="rgba(110,70,12,.45)" stroke-width="2"/>
+          <path d="M55.6 130v150" stroke="rgba(255,250,225,.5)" stroke-width="1.2"/>
+          <path d="M46.5 105h27" stroke="rgba(255,250,225,.55)" stroke-width="1.2"/>
+        </g>
+      </symbol>
+    </defs>
+  </svg>
+
+  <div class="snow" aria-hidden="true"></div>
+
+  <header class="hero">
+    <div class="lights" aria-hidden="true"></div>
+
+    <!-- Der Schlüssel: 11 dünne Schichten hintereinander ergeben in 3D eine "Dicke" -->
+    <div class="key-stage" aria-hidden="true">
+      <div class="key-glow"></div>
+      <div class="key-float">
+        <div class="key-turn">
+          <div class="key">
+            <svg class="key-layer face" style="--i:0" viewBox="0 0 120 300"><use href="#key-shape"/><use href="#key-details"/></svg>
+            <svg class="key-layer" style="--i:1" viewBox="0 0 120 300"><use href="#key-shape"/></svg>
+            <svg class="key-layer" style="--i:2" viewBox="0 0 120 300"><use href="#key-shape"/></svg>
+            <svg class="key-layer" style="--i:3" viewBox="0 0 120 300"><use href="#key-shape"/></svg>
+            <svg class="key-layer" style="--i:4" viewBox="0 0 120 300"><use href="#key-shape"/></svg>
+            <svg class="key-layer" style="--i:5" viewBox="0 0 120 300"><use href="#key-shape"/></svg>
+            <svg class="key-layer" style="--i:6" viewBox="0 0 120 300"><use href="#key-shape"/></svg>
+            <svg class="key-layer" style="--i:7" viewBox="0 0 120 300"><use href="#key-shape"/></svg>
+            <svg class="key-layer" style="--i:8" viewBox="0 0 120 300"><use href="#key-shape"/></svg>
+            <svg class="key-layer" style="--i:9" viewBox="0 0 120 300"><use href="#key-shape"/></svg>
+            <svg class="key-layer face" style="--i:10" viewBox="0 0 120 300"><use href="#key-shape"/><use href="#key-details"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="eyebrow">Einweihungsparty</p>
+    <h1>Dein temporärer Wohnungs&shy;schlüssel</h1>
+  </header>
+
+  <main class="wrap">
+
+    <!-- ============ 1) Login ============ -->
+    <section id="login" class="card login" aria-labelledby="login-title" hidden>
+      <h2 id="login-title">Komm rein!</h2>
+      <p class="sub">Wir haben eine neue Wohnung – und für einen Abend bekommst du einen Schlüssel dazu. Gib den Code aus unserer Nachricht ein, um die Tür aufzuschliessen.</p>
+
+      <p id="setup-hint" class="hint" hidden>
+        <strong>Vorschau-Modus:</strong> Supabase ist noch nicht verbunden. Trag in <code>config.js</code> deine URL und deinen Key ein (ANLEITUNG.md, Schritt 3). Bis dahin kommst du mit einem beliebigen Code rein – es wird nichts gespeichert.
+      </p>
+
+      <form id="login-form" novalidate>
+        <input class="sr-only" type="text" name="username" value="gast" autocomplete="username" tabindex="-1" aria-hidden="true">
+        <div class="field">
+          <label for="password">Dein Code</label>
+          <div class="pw">
+            <input id="password" name="password" type="password" autocomplete="current-password" autocapitalize="off" spellcheck="false" enterkeyhint="go" required>
+            <button type="button" class="pw-toggle" id="pw-toggle" aria-pressed="false" aria-controls="password">zeigen</button>
+          </div>
+        </div>
+        <button class="btn btn-gold btn-block" type="submit">Tür aufschliessen</button>
+      </form>
+    </section>
+
+    <!-- ============ 2) Einladung (erst nach dem Login) ============ -->
+    <div id="invite" hidden>
+
+      <p class="lead intro">Wir sind umgezogen – und das muss gefeiert werden! Komm vorbei auf Glühwein, Punsch und einen gemütlichen Abend unter Lichterketten.</p>
+
+      <section class="card ticket" aria-label="Zutrittskarte">
+        <div class="ticket-head">
+          <span class="label">Zutrittskarte</span>
+          <span class="countdown" id="countdown"></span>
+        </div>
+        <div class="ticket-row">
+          <span class="label">Gültig am</span>
+          <p class="big">Samstag, 5.&nbsp;Dezember 2026</p>
+          <p class="time">ab 19:00 Uhr</p>
+        </div>
+        <div class="ticket-row">
+          <span class="label">Zutritt</span>
+          <p class="address" id="address">wird geladen …</p>
+          <p class="note" id="address-note" hidden></p>
+          <a class="btn btn-ghost btn-small" id="route" href="#" target="_blank" rel="noopener" hidden>Route planen ↗</a>
+        </div>
+        <div class="ticket-row">
+          <span class="label">Inklusive</span>
+          <p>Glühwein, Punsch und ganz viele Lichterketten</p>
+          <p class="fine">Gültig für einen Abend · übertragbar auf deine Begleitung</p>
+        </div>
+      </section>
+
+      <!-- Anmeldung -->
+      <section class="card" id="rsvp" aria-labelledby="rsvp-title">
+        <h2 id="rsvp-title">Bist du dabei?</h2>
+        <p class="sub">Damit wir wissen, wie viel Glühwein wir aufsetzen müssen.</p>
+
+        <form id="rsvp-form" novalidate>
+          <div class="field">
+            <label for="rsvp-name">Dein Name</label>
+            <input id="rsvp-name" name="name" maxlength="80" autocomplete="name" required>
+          </div>
+
+          <div class="field">
+            <label for="rsvp-persons">Wie viele Personen (mit dir)?</label>
+            <div class="stepper">
+              <button type="button" class="step" data-step="-1" aria-label="Eine Person weniger">−</button>
+              <input id="rsvp-persons" name="persons" type="number" inputmode="numeric" min="1" max="10" value="1">
+              <button type="button" class="step" data-step="1" aria-label="Eine Person mehr">+</button>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="rsvp-message">Nachricht an uns <em>(optional)</em></label>
+            <textarea id="rsvp-message" name="message" rows="3" maxlength="500" placeholder="Freu mich! / Ich komme etwas später …"></textarea>
+          </div>
+
+          <button class="btn btn-gold btn-block" type="submit">Ich bin dabei!</button>
+        </form>
+
+        <div id="rsvp-done" class="done" hidden>
+          <div class="done-icon" aria-hidden="true">🔑</div>
+          <p class="done-title">Dein Schlüssel ist aktiviert<span id="rsvp-done-name"></span>!</p>
+          <p id="rsvp-done-text">Wir freuen uns auf dich.</p>
+          <button type="button" class="link" id="rsvp-again">Noch jemanden anmelden</button>
+        </div>
+      </section>
+
+      <!-- Snack-Liste -->
+      <section class="card" id="snacks" aria-labelledby="snacks-title">
+        <h2 id="snacks-title">Wer bringt was?</h2>
+        <p class="sub">Für Glühwein und Punsch sorgen wir. Wenn du magst, bring etwas zum Knabbern mit – tipp einfach drauf.</p>
+
+        <ul class="snack-list" id="open-snacks"></ul>
+        <p class="empty" id="snacks-loading">Snacks werden geladen …</p>
+        <p class="empty" id="open-empty" hidden>Alles vergeben – bring gern etwas Eigenes mit!</p>
+
+        <form id="add-form" class="add" novalidate>
+          <label class="add-label" for="add-name">Etwas anderes? Ich bringe … mit</label>
+          <div class="add-row">
+            <input id="add-name" maxlength="60" placeholder="z. B. Grittibänz, Nüsse" autocomplete="off" enterkeyhint="done">
+            <button class="btn btn-gold" type="submit">Eintragen</button>
+          </div>
+        </form>
+
+        <div class="mine" id="mine" hidden>
+          <span class="label">Du bringst mit</span>
+          <p id="mine-list"></p>
+        </div>
+
+        <div class="taken" id="taken" hidden>
+          <span class="label">Kommt schon mit</span>
+          <ul class="snack-list taken-list" id="taken-snacks"></ul>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>Wir freuen uns auf dich! 🧡</p>
+    <button type="button" class="link" id="logout" hidden>Abmelden</button>
+  </footer>
+
+  <div class="toasts" id="toasts" role="status" aria-live="polite"></div>
+
+  <!-- Rückfrage beim Antippen eines Snacks -->
+  <dialog id="snack-dialog" aria-labelledby="dlg-title">
+    <form id="dlg-form" class="dlg" novalidate>
+      <div class="dlg-icon" aria-hidden="true">🎁</div>
+      <h3 id="dlg-title">Du bringst <span id="dlg-snack"></span> mit?</h3>
+      <p class="sub">Deinen Namen sehen nur wir.</p>
+      <div class="field">
+        <label for="dlg-name">Dein Name</label>
+        <input id="dlg-name" maxlength="80" autocomplete="name" required>
+        <p class="field-error" id="dlg-error" hidden>Bitte gib deinen Namen ein.</p>
+      </div>
+      <div class="dlg-actions">
+        <button type="button" class="btn btn-ghost" id="dlg-cancel">Abbrechen</button>
+        <button type="submit" class="btn btn-gold" id="dlg-ok">Ja, bring ich mit</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.118.0/dist/umd/supabase.js" integrity="sha384-TcHRA3zBbn+Lexh5n+Oil4guNPOS3rjNDpGRAN46u/s/mB2IZ50ceC6TYDU2yvgK" crossorigin="anonymous"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
